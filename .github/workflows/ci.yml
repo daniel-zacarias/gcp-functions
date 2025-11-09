@@ -33,7 +33,7 @@ jobs:
       run: ./mvnw test
 
     - name: Build application
-      run: ./mvnw clean package -DskipTests
+      run: ./mvnw clean package -Dquarkus.package.type=uber-jar -DskipTests
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -69,7 +69,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
+        docker build -f src/main/docker/Dockerfile.jvm \
+        -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
         docker push gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
 
     - name: Deploy to Cloud Run
