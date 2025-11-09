@@ -88,7 +88,8 @@ COPY --chown=185 target/gcp-functions-1.0.0-SNAPSHOT-runner.jar /deployments/app
 
 EXPOSE 8080
 USER 185
-ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+ENV PORT=8080
+ENV JAVA_OPTS="-Dquarkus.http.host=0.0.0.0 -Dquarkus.http.port=${PORT} -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
 ENV JAVA_APP_JAR="/deployments/app.jar"
 
 ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
