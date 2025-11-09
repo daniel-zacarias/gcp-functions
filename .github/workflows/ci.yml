@@ -11,7 +11,7 @@ on:
 env:
   PROJECT_ID: acoustic-scarab-470501-i6
   GAR_LOCATION: ${{ secrets.GAR_LOCATION || 'us-central1' }}
-  SERVICE_NAME: teste-gcp-grupo-estudos
+  SERVICE_NAME: function-gcp-demo
   REGION: ${{ secrets.GCP_REGION || 'us-central1' }}
 
 jobs:
