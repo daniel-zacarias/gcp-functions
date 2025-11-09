@@ -78,19 +78,7 @@
 #   accessed directly. (example: "foo.example.com,bar.example.com")
 #
 ###
-FROM registry.access.redhat.com/ubi9/openjdk-21:1.23
-
-ENV LANGUAGE='en_US:en'
-
-
-# Copy the JAR file
-COPY --chown=185 target/gcp-functions-1.0.0-SNAPSHOT-runner.jar /deployments/app.jar
-
-EXPOSE 8080
-USER 185
-ENV PORT=8080
-ENV JAVA_OPTS="-Dquarkus.http.host=0.0.0.0 -Dquarkus.http.port=${PORT} -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-ENV JAVA_APP_JAR="/deployments/app.jar"
-
-ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
+FROM eclipse-temurin:21-jre
+COPY target/*-runner.jar /app.jar
+CMD ["java", "--add-opens", "java.base/java.lang=ALL-UNNAMED", "-jar", "/app.jar"]
 
