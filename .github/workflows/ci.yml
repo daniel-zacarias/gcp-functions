@@ -33,7 +33,7 @@ jobs:
       run: ./mvnw test
 
     - name: Build application
-      run: ./mvnw clean package -Dquarkus.package.type=uber-jar -DskipTests
+      run: ./mvnw clean package -DskipTests
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
