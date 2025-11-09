@@ -80,7 +80,13 @@ jobs:
         region: ${{ env.REGION }}
         env_vars: |
           QUARKUS_HTTP_PORT=8080
+          QUARKUS_HTTP_HOST=0.0.0.0
           FUNCTION_TARGET=httpFunction
         flags: >
           --allow-unauthenticated
           --port=8080
+          --min-instances=1
+          --cpu=1
+          --memory=512Mi
+          --timeout=300
+          --startup-probe-initial-delay=30
