@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 env:
-  PROJECT_ID: elated-bison-474212-v4
+  PROJECT_ID: acoustic-scarab-470501-i6
   GAR_LOCATION: ${{ secrets.GAR_LOCATION || 'us-central1' }}
   SERVICE_NAME: teste-gcp-grupo-estudos
   REGION: ${{ secrets.GCP_REGION || 'us-central1' }}
